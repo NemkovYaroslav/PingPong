@@ -57,7 +57,6 @@ void RenderComponent::Initialize()
 		if (errorVertexCode)
 		{
 			char* compileErrors = (char*)(errorVertexCode->GetBufferPointer());
-
 			std::cout << compileErrors << std::endl;
 		}
 		else

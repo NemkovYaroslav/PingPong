@@ -17,16 +17,8 @@ public:
 	std::shared_ptr<GameObject> rightPlayer;
 	std::shared_ptr<GameObject> ball;
 
-	std::shared_ptr<GameObject> collisionBall;
-	std::shared_ptr<GameObject> collisionRightRacket;
-	std::shared_ptr<GameObject> collisionLeftRacket;
-	std::shared_ptr<GameObject> collisionTopWall;
-	std::shared_ptr<GameObject> collisionBottomWall;
-
 	DirectX::BoundingBox* BBTopWall    = {};
 	DirectX::BoundingBox* BBBottomWall = {};
-	DirectX::BoundingBox* BBLeftWall   = {};
-	DirectX::BoundingBox* BBRightWall  = {};
 
 	DirectX::BoundingBox* BBLeftRacket = {};
 	DirectX::BoundingBox* BBRightRacket = {};
@@ -43,8 +35,8 @@ public:
 
 	bool isGameEnded = false;
 
-	int pointPlayer = 0;
-	int pointEnemy  = 0;
+	int pointFirstPlayer = 0;
+	int pointSecondPlayer  = 0;
 
 	static void CreateInstance(LPCWSTR name, int screenWidth, int screenHeight);
 
