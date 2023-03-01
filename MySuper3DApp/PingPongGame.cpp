@@ -199,7 +199,6 @@ void PingPongGame::Update()
 			if (BBBall->Center.x + direction.x * ballSpeed * deltaTime > BBRightRacket->Center.x - BBRightRacket->Extents.x - 0.01f)
 			{
 				*ball->position = { BBBall->Center.x + direction.x * distance1, BBBall->Center.y + direction.y * distance1, 0.0f };
-				//BBBall->Center = { BBBall->Center.x + direction.x * distance1, BBBall->Center.y + direction.y * distance1, 0.0f };
 				// REFLECT
 				DirectX::SimpleMath::Vector3 vector0 = {
 					BBBall->Center.x - (BBRightRacket->Center.x + BBRightRacket->Extents.x * 2),
