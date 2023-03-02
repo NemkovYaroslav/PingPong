@@ -256,8 +256,14 @@ void PingPongGame::Update()
 					{
 						*ball->position = { BBBall->Center.x + direction.x * distance3, BBBall->Center.y + direction.y * distance3, 0.0f };
 						// REFLECT
-						DirectX::SimpleMath::Vector3 vector = DirectX::SimpleMath::Vector3::Reflect({ direction.x, direction.y, direction.z }, { 0.0f, -1.0f, 0.0f });
-						direction = { vector.x, vector.y, vector.z };
+						DirectX::SimpleMath::Vector3 vector0 = { 0.0f, -1.0f, 0.0f };
+						vector0.Normalize();
+						DirectX::SimpleMath::Vector3 vector = DirectX::SimpleMath::Vector3::Reflect({ direction.x, direction.y, direction.z }, vector0);
+						direction.x = vector.x;
+						direction.y = vector.y;
+						direction.z = vector.z;
+
+						//ballSpeed += 0.8f;
 					}
 					else
 					{
@@ -273,16 +279,19 @@ void PingPongGame::Update()
 						if (BBBall->Center.y + direction.y * ballSpeed * deltaTime < BBBottomWall->Center.y + BBBottomWall->Extents.y + 0.01f)
 						{
 							*ball->position = { BBBall->Center.x + direction.x * distance4, BBBall->Center.y + direction.y * distance4, 0.0f };
-							BBBall->Center = { BBBall->Center.x + direction.x * distance4, BBBall->Center.y + direction.y * distance4, 0.0f };
 							// REFLECT
-							DirectX::SimpleMath::Vector3 vector = DirectX::SimpleMath::Vector3::Reflect({ direction.x, direction.y, direction.z }, { 0.0f, 1.0f, 0.0f });
+							DirectX::SimpleMath::Vector3 vector0 = { 0.0f, 1.0f, 0.0f };
+							vector0.Normalize();
+							DirectX::SimpleMath::Vector3 vector = DirectX::SimpleMath::Vector3::Reflect({ direction.x, direction.y, direction.z }, vector0);
 							direction = { vector.x, vector.y, vector.z };
+
+							//ballSpeed += 0.8f;
 						}
-					}
-					else
-					{
-						*ball->position += DirectX::XMVectorScale(direction, ballSpeed * deltaTime);
-						BBBall->Center = { ball->position->x, ball->position->y, 0.0f };
+						else
+						{
+							*ball->position += DirectX::XMVectorScale(direction, ballSpeed * deltaTime);
+							BBBall->Center = { ball->position->x, ball->position->y, 0.0f };
+						}
 					}
 				}
 			}

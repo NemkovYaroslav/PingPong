@@ -26,7 +26,7 @@ public:
 
 	float ballSpeed = 0.3f;
 	float racketSpeed = 1.2f;
-	DirectX::SimpleMath::Vector4 direction = { 1, 0, 0, 0 };
+	DirectX::SimpleMath::Vector4 direction = { 0, 1, 0, 0 };
 
 	bool RRCanMoveUp    = true;
 	bool RRCanMoveDown  = true;
